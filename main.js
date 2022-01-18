@@ -32,7 +32,6 @@ const closeIssue = (id) => {
   document.getElementById(`description-${id}`).style.textDecoration =
     "line-through";
   localStorage.setItem("issues", JSON.stringify(issues));
-  // fetchIssues();
 };
 
 const deleteIssue = (id) => {
@@ -45,14 +44,10 @@ const deleteIssue = (id) => {
 
 const fetchIssues = () => {
   const issues = JSON.parse(localStorage.getItem("issues"));
-  // console.log(issues[issues.length - 1].id);
   const issuesList = document.getElementById("issuesList");
-  // issuesList.innerHTML = "";
-
-  // for (var i = 0; i < issues.length; i++) {
-  //   const { id, description, severity, assignedTo, status } = issues[i];
   const div = document.createElement("div");
-  div.innerHTML = `<div id="issue-${issues[issues.length - 1].id}" class="well">
+  div.id = `issue-${issues[issues.length - 1].id}`;
+  div.innerHTML = `<div class="well">
                               <h6>Issue ID: ${
                                 issues[issues.length - 1].id
                               } </h6>
@@ -78,5 +73,4 @@ const fetchIssues = () => {
                               })" class="btn btn-danger">Delete</a>
                               </div>`;
   issuesList.appendChild(div);
-  // }
 };
